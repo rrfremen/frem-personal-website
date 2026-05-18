@@ -1,0 +1,28 @@
+name: CD
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      -  name: Checkout
+         uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Deploy to VPS
+        run: |
+          echo "${{ secrets.VPS_SSH_KEY }}" > /tmp/deploy_key
+          chmod 600 /tmp/deploy_key
+          mkdir -p ~/.ssh
+          echo "${{ secrets.VPS_HOST_FINGERPRINT }}" >> ~/.ssh/known_hosts
+          rsync -az --delete -e "ssh -i /tmp/deploy_key -o HostKeyAlgorithms=ssh-ed25519" dist/ ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}:/opt/frontend
+          rm /tmp/deploy_key
