@@ -1,0 +1,14 @@
+{
+    "nav": {
+        "home": "Home",
+        "cv": "CV"
+    },
+    "home": {
+        "title": "Welcome",
+        "about_heading": "About Me",
+        "about_body": "This is the about me section."
+    },
+    "cv": {
+        "uni": "University of applied sciences"
+    }
+}

@@ -1,0 +1,14 @@
+{
+    "nav": {
+        "home": "Startseite",
+        "cv": "Lebenslauf"
+    },
+    "home": {
+        "title": "Wilkommen",
+        "about_heading": "Über mich",
+        "about_body": "Das ist der Über-mich-Abschnitt."
+    },
+    "cv": {
+        "uni": "Fachhochschule"
+    }
+}
