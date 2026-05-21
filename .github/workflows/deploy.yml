@@ -27,5 +27,5 @@ jobs:
           chmod 600 /tmp/deploy_key
           mkdir -p ~/.ssh
           echo "${{ secrets.VPS_HOST_FINGERPRINT }}" >> ~/.ssh/known_hosts
-          rsync -az --delete -e "ssh -i /tmp/deploy_key -o HostKeyAlgorithms=ssh-ed25519" dist/ ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}:/opt/frontend
+          rsync -az --delete -e "ssh -i /tmp/deploy_key -p ${{ secrets.VPS_SSH_PORT }} -o HostKeyAlgorithms=ssh-ed25519" dist/ ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}:/opt/frontend
           rm /tmp/deploy_key
