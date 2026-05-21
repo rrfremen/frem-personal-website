@@ -11,7 +11,7 @@ export default function CVPage() {
             </h1>
             <section id="uni">
                 <h2 className="text-l font-semibold mb-2">
-                    {t("cv.uni")}
+                    {t("cv.bachelor")}
                 </h2>
             </section>
         </div>

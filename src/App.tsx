@@ -3,6 +3,7 @@ import { LanguageProvider } from "./context/LanguageContext"
 import Layout from "./components/Layout";
 import HomePage from "./pages/HomePage";
 import CVPage from "./pages/CVPage";
+import ProjectsPage from "./pages/ProjectsPage";
 
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
           <Route element={<Layout />}>
             <Route path="/" element={<HomePage />} />
             <Route path="/cv" element={<CVPage />} />
+            <Route path="/projects" element={<ProjectsPage />} />
           </Route>
         </Routes>
       </BrowserRouter>
