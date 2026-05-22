@@ -2,6 +2,8 @@
     "nav": {
         "home": "Startseite",
         "cv": "Lebenslauf",
-        "projects": "Projekte"
+        "projects": "Projekte",
+        "last_updated": "Letzte Aktualisierung",
+        "close_sidebar": "Schließen"
     }
 }

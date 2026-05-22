@@ -21,7 +21,8 @@ function deepMerge(base: Record<string, unknown>, remote: Record<string, unknown
 
 interface LanguageContextType {
     language: Language;
-    t: (path: string) => string;
+    t: (path: string) => unknown;
+    ts: (path: string) => string;
     setLanguage: (language: Language) => void;
     languageLoading: boolean;
     languageError: string | null;
@@ -58,18 +59,23 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
         setLanguageLoaded(false);
     }
 
-    function t(path: string): string {
+    function t(path: string): unknown {
         const keys = path.split(".");
         let current: unknown = merged;
         for (const key of keys) {
             if (typeof current !== "object" || current === null) return path;
             current = (current as Record<string, unknown>)[key];
         }
-        return typeof current === "string" ? current : path;
+        return current ?? path;
+    }
+
+    function ts(path: string): string {
+        const result = t(path);
+        return typeof result === "string" ? result : path;
     }
 
     return (
-        <LanguageContext.Provider value={{ language, setLanguage: handleSetLanguage, t, languageLoading, languageError }}>
+        <LanguageContext.Provider value={{ language, setLanguage: handleSetLanguage, t, ts, languageLoading, languageError }}>
             {children}
         </LanguageContext.Provider>
     );

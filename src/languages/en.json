@@ -2,6 +2,8 @@
     "nav": {
         "home": "Home",
         "cv": "CV",
-        "projects": "Projects"
+        "projects": "Projects",
+        "last_updated": "Last updated",
+        "close_sidebar": "Close"
     }
 }

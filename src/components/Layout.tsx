@@ -1,4 +1,4 @@
-import { Outlet} from "react-router-dom";
+import { Outlet, Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useLanguage } from "@/context/LanguageContext";
 import { SideBar } from "./Sidebar";
@@ -10,7 +10,7 @@ import { toast, Toaster } from "sonner";
 
 
 export default function Layout() {
-    const { language, setLanguage, languageLoading, languageError } = useLanguage();
+    const { ts, language, setLanguage, languageLoading, languageError } = useLanguage();
 
     useEffect(() => {
         if (languageError) {
@@ -31,12 +31,12 @@ export default function Layout() {
                         </SheetTrigger>
                         <SideBar /> 
                     </Sheet>
-                    <span className="font-semibold text-lg"> 
-                        Name 
-                    </span>
+                    <Link to="/">
+                        <span className="font-semibold text-lg"> RR </span>
+                    </Link>
                 </div>
 
-                {/* langugages */}
+                {/* languages */}
                 <div className="flex gap-2">
                     <button
                         onClick={() => setLanguage("en")}
@@ -55,8 +55,8 @@ export default function Layout() {
 
             {/* Page content */}
             <div className="flex flex-1 overflow-hidden w-full">
-                <main className="flex-1 p-8 overflow-y-auto">
-                    <div className="max-w-7xl mx-auto px-4">
+                <main className="flex-1 p-4 md:p-8 overflow-y-auto">
+                    <div className="max-w-7xl mx-auto">
                         {languageLoading ? (
                             <div className="flex flex-col gap-4">
                                 <Skeleton className="h-8 w-1/3" />
@@ -72,6 +72,11 @@ export default function Layout() {
                     </div>
                 </main>
             </div>
+
+            {/* Footer */}
+            <footer className="text-center text-sm bg-gray-900 text-white py-4">
+                © 2026 {ts("footer.copyright_name")} · {ts("nav.last_updated")} 22.05.2026
+            </footer>
         </div>
     )
 }

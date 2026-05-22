@@ -8,7 +8,7 @@ import { NavLink } from "react-router-dom"
 
 
 export function SideBar() {
-const { t } = useLanguage();
+const { ts } = useLanguage();
     
     return (
         <SheetContent side="left">
@@ -20,21 +20,23 @@ const { t } = useLanguage();
                 <SheetClose asChild>
                     <NavLink to="/">
                         <Button variant="ghost" className="w-full justify-start hover:bg-gray-100">
-                            {t("nav.home")}
+                            {ts("nav.home")}
                         </Button>
                     </NavLink>
                 </SheetClose>
+
                 <SheetClose asChild>
                     <NavLink to="/cv">
                         <Button variant="ghost" className="w-full justify-start hover:bg-gray-100">
-                            {t("nav.cv")}
+                            {ts("nav.cv")}
                         </Button>
                     </NavLink>
                 </SheetClose>
+
                 <SheetClose asChild>
                     <NavLink to="/projects">
                         <Button variant="ghost" className="w-full justify-start hover:bg-gray-100">
-                            {t("nav.projects")}
+                            {ts("nav.projects")}
                         </Button>
                     </NavLink>
                 </SheetClose>
@@ -42,7 +44,7 @@ const { t } = useLanguage();
 
             <SheetFooter>
                 <SheetClose asChild>
-                    <Button variant="outline"> Close </Button>
+                    <Button variant="outline"> {ts("nav.close_sidebar")} </Button>
                 </SheetClose>
             </SheetFooter>
         </SheetContent>
