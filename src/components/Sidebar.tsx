@@ -34,6 +34,14 @@ const { ts } = useLanguage();
                 </SheetClose>
 
                 <SheetClose asChild>
+                    <NavLink to="/techstacks">
+                        <Button variant="ghost" className="w-full justify-start hover:bg-gray-100">
+                            Tech-Stacks
+                        </Button>
+                    </NavLink>
+                </SheetClose>
+
+                <SheetClose asChild>
                     <NavLink to="/projects">
                         <Button variant="ghost" className="w-full justify-start hover:bg-gray-100">
                             {ts("nav.projects")}

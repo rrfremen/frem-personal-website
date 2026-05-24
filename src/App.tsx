@@ -4,6 +4,7 @@ import Layout from "./components/Layout";
 import HomePage from "./pages/HomePage";
 import CVPage from "./pages/CVPage";
 import ProjectsPage from "./pages/ProjectsPage";
+import TechStacksPage from "./pages/TechStacksPage";
 
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
           <Route element={<Layout />}>
             <Route path="/" element={<HomePage />} />
             <Route path="/cv" element={<CVPage />} />
+            <Route path="/techstacks" element={<TechStacksPage />} />
             <Route path="/projects" element={<ProjectsPage />} />
           </Route>
         </Routes>
