@@ -75,7 +75,7 @@ export default function Layout() {
 
             {/* Footer */}
             <footer className="text-center text-sm bg-gray-900 text-white py-4">
-                © 2026 {ts("footer.copyright_name")} · {ts("nav.last_updated")} 22.05.2026
+                © 2026 {ts("footer.copyright_name")} · {ts("nav.last_updated")} 24.05.2026
             </footer>
         </div>
     )
