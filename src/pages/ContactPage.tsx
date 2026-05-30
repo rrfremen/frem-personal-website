@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { apiFetch } from "@/services/api";
 import { useLanguage } from "@/context/LanguageContext";
 import { Button } from "@/components/ui/button";
@@ -30,13 +30,18 @@ export default function ContactPage() {
     const [error, setError] = useState<string | null>(null);
     const [widgetId, setWidgetId] = useState<string | null>(null);
 
-    function handleTurnstileRef(el: HTMLDivElement | null) {
-        if (!el || widgetId || !window.turnstile) return;
-        const id = window.turnstile.render(el, {
-            sitekey: TURNSTILE_SITE_KEY,
-        });
-        setWidgetId(id);
-    }
+    useEffect(() => {
+        if (widgetId) return;
+        const interval = setInterval(() => {
+            if (!window.turnstile) return;
+            const container = document.getElementById("turnstile-container");
+            if (!container) return;
+            const id = window.turnstile.render(container, { sitekey: TURNSTILE_SITE_KEY });
+            setWidgetId(id);
+            clearInterval(interval);
+        }, 100);
+        return () => clearInterval(interval);
+    }, [widgetId]);
 
     async function handleSubmit() {
         setError(null);
@@ -114,7 +119,7 @@ export default function ContactPage() {
             </Field>
 
             {/* Turnstile widget — script loaded via index.html */}
-            <div ref={handleTurnstileRef} />
+            <div id="turnstile-container" />
 
             {error && <FieldError>{error}</FieldError>}
 
