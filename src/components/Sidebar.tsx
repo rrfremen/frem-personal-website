@@ -48,9 +48,25 @@ const { ts } = useLanguage();
                         </Button>
                     </NavLink>
                 </SheetClose>
+
+                <SheetClose asChild>
+                    <NavLink to="/contact">
+                        <Button variant="ghost" className="w-full justify-start hover:bg-gray-100">
+                            Contact
+                        </Button>
+                    </NavLink>
+                </SheetClose>
             </div>
 
             <SheetFooter>
+                <SheetClose asChild>
+                    <NavLink to="/pilot">
+                        <Button variant="outline" className="w-full">
+                            Admin
+                        </Button>
+                    </NavLink>
+                </SheetClose>
+
                 <SheetClose asChild>
                     <Button variant="outline"> {ts("nav.close_sidebar")} </Button>
                 </SheetClose>
