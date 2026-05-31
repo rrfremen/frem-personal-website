@@ -9,13 +9,17 @@ interface AuthContextType {
 const AuthContext = createContext<AuthContextType | null>(null);
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
-    const [token, setToken] = useState<string | null>(null);
+    const [token, setToken] = useState<string | null>(
+        sessionStorage.getItem("australiansteak")
+    );
 
     function login(token: string) {
+        sessionStorage.setItem("australiansteak", token);
         setToken(token);
     }
 
     function logout() {
+        sessionStorage.removeItem("australiansteak");
         setToken(null);
     }
 
