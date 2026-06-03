@@ -96,7 +96,7 @@ export default function Layout() {
 
             {/* Footer */}
             <footer className="text-center text-sm bg-gray-900 text-white py-4">
-                © 2026 {ts("footer.copyright_name")} · {ts("nav.last_updated")} 31.05.2026  · <Link to="/privacy" className="underline hover:text-gray-300">{ts("nav.privacy")}</Link>
+                © 2026 {ts("footer.copyright_name")} · {ts("nav.last_updated")} 03.06.2026  · <Link to="/privacy" className="underline hover:text-gray-300">{ts("nav.privacy")}</Link>
             </footer>
 
             <ContentEditorDialog

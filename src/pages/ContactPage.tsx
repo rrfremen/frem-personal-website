@@ -97,7 +97,7 @@ export default function ContactPage() {
             </Field>
 
             <Field>
-                <FieldLabel>{ts("contact.email")}</FieldLabel>
+                <FieldLabel>{ts("contact.email")} <span className="text-gray-400 font-normal">(Optional)</span> </FieldLabel>
                 <Input
                     type="email"
                     value={email}
