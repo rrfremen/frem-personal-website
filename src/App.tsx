@@ -9,6 +9,7 @@ import TechStacksPage from "./pages/TechStacksPage";
 import ContactPage from "./pages/ContactPage";
 import AdminLoginPage from "./pages/AdminLoginPage";
 import AdminPage from "./pages/AdminPage";
+import PrivacyPage from "./pages/PrivacyPage";
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
               <Route path="/contact" element={<ContactPage />} />
               <Route path="/pilot/login" element={<AdminLoginPage />} />
               <Route path="/pilot" element={<AdminPage />} />
+              <Route path="/privacy" element={<PrivacyPage />} />
             </Route>
           </Routes>
         </BrowserRouter>
