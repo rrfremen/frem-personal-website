@@ -7,6 +7,7 @@ interface Project {
     image: string;
     tags: string[];
     link: string;
+    status: "live" | "in-progress" | "archived";
 }
 
 export default function ProjectsPage() {
