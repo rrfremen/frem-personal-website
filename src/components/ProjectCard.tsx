@@ -4,6 +4,11 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "./ui/dialog";
 
 const BASE_URL = import.meta.env.VITE_API_BASE_URL
 const TAG_LIMIT = 4
+const STATUS_CONFIG = {
+    "live":         { label: "Live", color: "bg-green-500 animate-pulse" },
+    "in-progress":  { label: "In Progress", color: "bg-yellow-400" },
+    "archived":     { label: "Archived", color: "bg-gray-400" }
+}
 
 interface Project {
     title: string;
@@ -11,13 +16,15 @@ interface Project {
     image: string;
     tags: string[];
     link: string;
+    status: "live" | "in-progress" | "archived";
 }
 
 
-export default function ProjectCard({ title, description, image, tags, link }: Project) {
+export default function ProjectCard({ title, description, image, tags, link, status }: Project) {
     const [open, setOpen] = useState(false)
     const isLongTags = tags.length > TAG_LIMIT
     const visibleTags = isLongTags ? tags.slice(0, TAG_LIMIT) : tags
+    const { label, color } = STATUS_CONFIG[status]
 
     return (
         <>
@@ -60,6 +67,12 @@ export default function ProjectCard({ title, description, image, tags, link }: P
                         </a>
                     )}
                 </CardContent>
+
+                <div className="px-6 pb-2 flex items-center gap-2">
+                    <span className={`w-2.5 h-2.5 rounded-full ${color}`} />
+                    <span className="text-xs text-muted-foreground">{label}</span>
+                </div>
+
             </Card>
 
             <Dialog open={open} onOpenChange={setOpen}>
